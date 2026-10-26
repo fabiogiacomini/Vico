@@ -27,6 +27,8 @@ The variables contain paths, not password values. The script passes passwords th
 
 Keep encrypted backups of the signing key and password under the owner's control. Reusing the same signing identity is necessary for ordinary direct-install updates. Do not regenerate it for each release or place it in release assets, a public issue, the source ZIP or GitHub Actions artifacts.
 
+For each new distributed build, increment `android.versionCode` in `app.json`, update the visible version and publish a new immutable preview tag. Record the actual build commit rather than assuming the current documentation commit produced an older APK. Verify 16 KB native-library ZIP alignment with the SDK's `zipalign -c -P 16 4` before publishing.
+
 ## Install a published preview
 
 Download the APK from the project's GitHub Releases page on the Android phone and open it. Android may ask for permission to install from the chosen browser or file manager; grant it only for the trusted download source. Do not disable Play Protect or device-wide security checks. Device policy, operating system, region and manufacturer can affect installation.

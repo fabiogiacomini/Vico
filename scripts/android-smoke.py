@@ -7,7 +7,15 @@ def adb(*args):
  return subprocess.check_output(['adb',*args],stderr=subprocess.STDOUT).decode(errors='replace')
 def tree():
  adb('shell','uiautomator','dump','/sdcard/vico-smoke.xml')
- return ET.fromstring(adb('shell','cat','/sdcard/vico-smoke.xml'))
+ root=ET.fromstring(adb('shell','cat','/sdcard/vico-smoke.xml'))
+ # A cold CI image can show an unrelated Pixel Launcher ANR. Never dismiss a Vico ANR.
+ if any(n.get('text')=="Pixel Launcher isn't responding" for n in root.iter('node')):
+  close=next((n for n in root.iter('node') if n.get('text')=='Close app'),None)
+  if close is not None:
+   b=list(map(int,re.findall(r'\d+',close.get('bounds',''))))
+   adb('shell','input','tap',str((b[0]+b[2])//2),str((b[1]+b[3])//2));time.sleep(2)
+   return tree()
+ return root
 def wait_text(text,timeout=60):
  deadline=time.monotonic()+timeout
  while time.monotonic()<deadline:
