@@ -1,0 +1,6 @@
+{
+  "alias": "vico",
+  "sha256": "de00be6873323c89367b36cb6049840d45d900bf07e32a0426745c4c1b77da20",
+  "subject": "CN=Vico Android Signing,O=Vico",
+  "purpose": "Public release certificate identity. Private key and password stay on the owner Mac outside source control and are not uploaded to GitHub."
+}

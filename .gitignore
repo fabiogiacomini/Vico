@@ -14,3 +14,6 @@ android/
 *.db-*
 .DS_Store
 dist-mobile/
+dist-android/
+__pycache__/
+*.pyc

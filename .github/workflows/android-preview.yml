@@ -36,6 +36,11 @@ jobs:
           grep -q 'expo.sqlite.useSQLCipher=true' android/gradle.properties
           grep -q 'signingConfig null // VICO_LOCAL_SIGNING' android/app/build.gradle
           grep -q 'android:allowBackup="false"' android/app/src/main/AndroidManifest.xml
+      - name: Include open source notices
+        run: |
+          python3 scripts/collect-notices.py dist-android/THIRD-PARTY-NOTICES.zip
+          mkdir -p android/app/src/main/assets
+          cp dist-android/THIRD-PARTY-NOTICES.zip android/app/src/main/assets/THIRD-PARTY-NOTICES.zip
       - name: Build standalone unsigned release
         working-directory: android
         run: ./gradlew :app:assembleRelease --no-daemon --no-configuration-cache --max-workers 2 -PreactNativeArchitectures=arm64-v8a,x86_64 -Pandroid.enableMinifyInReleaseBuilds=false
@@ -77,6 +82,7 @@ jobs:
           path: |
             dist-android/Vico-unsigned.apk
             dist-android/unsigned.sha256
+            dist-android/THIRD-PARTY-NOTICES.zip
             dist-android/smoke/
           retention-days: 7
           if-no-files-found: warn
