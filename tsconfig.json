@@ -1,6 +1,25 @@
 {
   "extends": "expo/tsconfig.base",
-  "compilerOptions": { "strict": true, "resolveJsonModule": true },
-  "include": ["App.tsx", "index.ts", "types.d.ts", "src/**/*.ts", "src/**/*.tsx", "tests/**/*.ts", "scripts/**/*.ts", "vitest.config.mts"],
-  "exclude": ["node_modules", "dist", "dist-mobile", "android", "ios"]
+  "compilerOptions": {
+    "strict": true,
+    "resolveJsonModule": true
+  },
+  "include": [
+    "App.tsx",
+    "index.ts",
+    "types.d.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "tests/**/*.ts",
+    "scripts/**/*.ts",
+    "vitest.config.mts",
+    "plugins/**/*.cjs"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "dist-mobile",
+    "android",
+    "ios"
+  ]
 }
