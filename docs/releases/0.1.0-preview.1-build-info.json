@@ -1,0 +1,54 @@
+{
+  "release": "v0.1.0-preview.1",
+  "applicationId": "org.vico.prototype",
+  "versionCode": 1,
+  "versionName": "0.1.0",
+  "sourceCommit": "f0e59db5c5808cb471f3cd5f29a46954cf29811c",
+  "nativeBuildRun": "https://github.com/fabiogiacomini/Vico/actions/runs/40307279780",
+  "nativeCompilationPassed": true,
+  "emulatorVerificationRun": "https://github.com/fabiogiacomini/Vico/actions/runs/40309002351",
+  "emulatorHarnessCommit": "a8a92398faea02a00bc6c01e87cac8e4cb1e2ee5",
+  "emulatorResult": "passed",
+  "emulator": "API 35 x86_64; disposable CI certificate",
+  "unsignedSha256": "f96a5997763c4d1406e3d896a3b3b56481565d0986f20bb52865101658b157f7",
+  "apk": "Vico-0.1.0-preview.1-android.apk",
+  "apkSha256": "7b60910ba4dd30bd53dedf438f04b975825aabc977f26cb0efd130da311edd0f",
+  "apkBytes": 90352873,
+  "signingCertificateSha256": "de00be6873323c89367b36cb6049840d45d900bf07e32a0426745c4c1b77da20",
+  "signatureSchemes": [
+    "v2",
+    "v3"
+  ],
+  "payloadUnchangedBySigning": true,
+  "minSdk": 26,
+  "targetSdk": 36,
+  "abis": [
+    "arm64-v8a",
+    "x86_64"
+  ],
+  "debuggable": false,
+  "allowBackup": false,
+  "nativeLibrariesWith16KiBLoadAlignment": 42,
+  "zipAlignment16KiBPassed": true,
+  "embeddedApplicationBundle": true,
+  "embeddedThirdPartyNotices": true,
+  "checks": [
+    "Strict TypeScript",
+    "60 domain and lifecycle tests",
+    "Native compilation",
+    "Native SQLCipher availability",
+    "Startup without development server",
+    "Synthetic outing creation",
+    "Persistence after restart",
+    "Permanent local deletion and absence after restart",
+    "Signature and unchanged payload",
+    "Compiled permissions and manifest"
+  ],
+  "limitations": [
+    "Early local-outing preview; no connected chat or live location sharing",
+    "No detailed basemap downloads or active crowd feed",
+    "Physical Android phone and iOS tests pending",
+    "No completed independent security audit"
+  ],
+  "buildNote": "The native build completed. Its first emulator attempt was obstructed by a Pixel Launcher system ANR. The exact unsigned artifact was separately retested successfully without recompilation."
+}

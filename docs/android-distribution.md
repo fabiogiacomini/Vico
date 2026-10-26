@@ -2,13 +2,15 @@
 
 Android preview releases are standalone APKs. They contain the application bundle and do not require Expo Go, a development server or a paid build service. Early previews remain local-outing prototypes: connected group chat, live sharing and complete basemap downloads are not available yet.
 
-## Reproducible workflow
+## Build and release workflow
 
 1. Run the `Build and verify Android preview` GitHub Actions workflow on the reviewed source commit. It generates the Android project, checks SQLCipher configuration and assembles a non-debuggable unsigned release for ARM64 and x86_64.
 2. CI signs a copy using a disposable test certificate, launches an API 35 x86_64 emulator and exercises startup, synthetic outing creation, persistence across restart, deletion and no resurrection after another restart. The temporary signer and test APK are removed after the test.
 3. Download the unsigned APK and smoke evidence from the successful run. Record the source commit and unsigned input checksum.
 4. Sign locally with the owner's dedicated release certificate. Private signing credentials remain outside source control and are not uploaded to GitHub. The helper verifies the final certificate and confirms signing did not change the application payload.
 5. Publish only the owner-signed APK, public certificate information and SHA-256 checksum in a GitHub prerelease, with feature limitations and validation evidence. Link to that release from the repository download page.
+
+If a run is interrupted by an unrelated emulator system failure after successful compilation, the `Verify existing Android preview artifact` workflow can retest the exact artifact. It checks the same-repository origin, source SHA and unsigned checksum before signing a disposable copy. Retesting does not replace native compilation or permit changing the payload.
 
 The initial preview supports Android 8/API 26 or later on ARM64 phones; x86_64 is included for compatible devices and emulator verification. It does not include 32-bit ARM or x86 builds. Physical-device, battery and background tests remain separate release gates.
 

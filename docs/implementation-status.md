@@ -1,6 +1,6 @@
 # Implementation status — 26 October 2026
 
-This status describes the local code, not a released mobile app. The complete Release 1 plan remains the target. Milestone A is **not complete** because physical Android/iOS, background map downloads and encrypted group exchange have not been demonstrated.
+This status describes the development preview. A signed standalone [Android APK is available](downloads.md); this is not the completed Release 1 product. The complete Release 1 plan remains the target. Milestone A is **not complete** because physical Android/iOS, background map downloads and encrypted group exchange have not been demonstrated.
 
 ## Working development slice
 
@@ -23,12 +23,14 @@ This status describes the local code, not a released mobile app. The complete Re
 ## Verification in this environment
 
 - Strict TypeScript check passed.
-- 55 domain/lifecycle tests passed, including deletion recovery and an expiry regression.
+- 60 domain/lifecycle tests passed, including deletion recovery and an expiry regression.
 - Web, Android and iOS JavaScript exports passed.
 - Android and iOS native project generation passed with SQLCipher flags, prototype IDs and permission configuration.
 - Browser UI inspected: home/practice outing, invalid-coordinate rejection, meeting point change, local pack check and honest missing crowd coverage.
 
-Native binary compilation, installation, background/screen-lock tests, secure-store erasure, iOS backup behavior, real offline map download, battery tests and independent security review have **not** run. The Mac has only command-line Xcode tools and no usable Android SDK/JDK. Exports and prebuild do not replace those checks.
+Android release compilation passed on GitHub Actions. An API 35 x86_64 emulator passed standalone launch, native SQLCipher availability, synthetic outing creation, encrypted persistence after restart, local deletion and absence after another restart. The same application payload was signed locally using the owner certificate, verified, checked for 16 KB ZIP/ELF alignment and published as `v0.1.0-preview.1`. The workflow and source commits are recorded in the release metadata.
+
+Physical phones, background/screen-lock tests, forensic secure-store erasure, iOS backup behavior, real offline map download, battery tests and independent security review remain **pending**. The Mac has a task-local JDK and signing tools; Android compilation and emulator execution used GitHub Actions. Full Xcode and the connected-iPhone Personal Team test remain pending the owner's setup. Exports and prebuild do not replace native testing.
 
 ## Next work in dependency order
 

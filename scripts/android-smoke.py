@@ -41,6 +41,8 @@ def screenshot(name):
  with (OUT/name).open('wb') as f:subprocess.run(['adb','exec-out','screencap','-p'],stdout=f,check=True)
 def reopen():
  adb('shell','am','force-stop',PACKAGE);adb('shell','am','start','-W','-n',PACKAGE+'/.MainActivity')
+if adb('shell','getprop','ro.kernel.qemu').strip() != '1':
+ raise SystemExit('Refusing to run destructive synthetic tests on a physical device.')
 try:
  apk=os.environ.get('VICO_SMOKE_APK','dist-android/Vico-ci-smoke.apk')
  adb('install','-r',apk);reopen();wait_text('Stay together.');screenshot('01-home.png')

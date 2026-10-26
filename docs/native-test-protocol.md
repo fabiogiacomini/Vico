@@ -17,4 +17,4 @@ Milestone A is open until these tests have physical-device evidence. Use synthet
 13. Run screen-reader and large-text workflows. Record contrast, touch targets, focus order, rotation and small-screen layout.
 14. Run an eight-hour locked-screen outing after background integration. Set the battery budget from actual device measurements, not a simulator estimate.
 
-Independent security review and resolved critical findings are mandatory before public release. A successful JavaScript export, native prebuild or unit suite is not evidence that these scenarios have passed.
+Independent security review and resolved critical findings are mandatory before a production release. An explicitly labelled local-outing development preview does not complete this gate. A successful JavaScript export, native prebuild or unit suite is not evidence that these scenarios have passed.

@@ -11,7 +11,7 @@ for vico_file in "$1" "$VICO_APKSIGNER" "$VICO_KEYSTORE" "$VICO_KEYSTORE_PASSWOR
   test -f "$vico_file"
 done
 if [ "$1" = "$2" ]; then echo 'Keep the unsigned input separate from the signed output.' >&2; exit 2; fi
-bash "$VICO_APKSIGNER" sign --ks "$VICO_KEYSTORE" --ks-key-alias vico --ks-pass "file:$VICO_KEYSTORE_PASSWORD_FILE" --key-pass "file:$VICO_KEYSTORE_PASSWORD_FILE" --v1-signing-enabled false --v2-signing-enabled true --v3-signing-enabled true --v4-signing-enabled false --out "$2" "$1"
+bash "$VICO_APKSIGNER" sign --ks "$VICO_KEYSTORE" --ks-key-alias vico --ks-pass "file:$VICO_KEYSTORE_PASSWORD_FILE" --v1-signing-enabled false --v2-signing-enabled true --v3-signing-enabled true --v4-signing-enabled false --out "$2" "$1"
 bash "$VICO_APKSIGNER" verify --verbose --print-certs "$2" > "$2.signing.txt"
 python3 - "$1" "$2" <<'PY'
 import sys,zipfile,json,re,hashlib

@@ -4,7 +4,13 @@
 
 Vico is a free Android and iOS project for private group outings, saved routes and useful information about the places ahead. It is being built with open source tools. The interface and repository documentation are in English.
 
-**Status: local development prototype, not a public mobile release.** Vico's original code is licensed under the [MIT License](LICENSE), selected by the owner on 26 October 2026. Third-party components retain their own licenses. See [the licensing and messaging decision](docs/decisions/002-license-and-messaging.md).
+**Status: Android development preview available; the full group app is still in development.** Vico's original code is licensed under the [MIT License](LICENSE), selected by the owner on 26 October 2026. Third-party components retain their own licenses. See [the licensing and messaging decision](docs/decisions/002-license-and-messaging.md).
+
+## Download
+
+[**Download the standalone Android APK**](https://github.com/fabiogiacomini/Vico/releases/download/v0.1.0-preview.1/Vico-0.1.0-preview.1-android.apk) · [Release details and verification](https://github.com/fabiogiacomini/Vico/releases/tag/v0.1.0-preview.1) · [Installation guide](docs/downloads.md)
+
+Android 8 or later, ARM64 phones; x86_64 is also included. This is an early local-outing preview, with no connected group chat or live sharing yet. A public iOS download is not available; the first personal-device test uses [Xcode and a free Apple account](docs/ios-free-account.md).
 
 ## What works in this prototype
 
@@ -21,13 +27,13 @@ Vico is a free Android and iOS project for private group outings, saved routes a
 
 The default view shows a **route diagram without a basemap**. Configure an approved map provider to activate MapLibre. A renderer does not supply offline map rights. No map tiles are downloaded by this prototype.
 
-Native storage uses SQLCipher and platform secure storage, with an independent encrypted database and key for each outing. Browser preview is deliberately memory-only: reload clears the session. These integrations still require physical-device verification. This is not a security certification.
+Native storage uses SQLCipher and platform secure storage, with an independent encrypted database and key for each outing. Browser preview is deliberately memory-only: reload clears the session. Native Android startup, encrypted persistence and deletion passed an emulator smoke test. These integrations still require physical-device verification. This is not a security certification.
 
 ## What is still being built
 
 Private group admission, chat, live sharing, Signal/MLS integration, relay hosting, background positioning, downloadable basemaps, online walking routing, personal recordings, authenticated source updates, active crowd adapters and field validation are not connected. The app says this explicitly; it does not simulate a working group or display invented crowds.
 
-The public release still requires the original implementation plan, native integration results, dependency-license compatibility and protocol decisions, a source pilot and an independent security review. [Implementation status](docs/implementation-status.md) maps the code to the plan.
+The production release still requires the original implementation plan, native integration results, dependency-license compatibility and protocol decisions, a source pilot and an independent security review. [Implementation status](docs/implementation-status.md) maps the code to the plan.
 
 ## Run locally
 
@@ -62,7 +68,7 @@ pnpm android
 pnpm ios
 ```
 
-`expo run:android` / `expo run:ios` install native dependencies when required. Generated `android/` and `ios/` directories are ignored; app configuration and native changes belong in reviewed Expo config plugins. Prototype identifiers are `org.vico.prototype`; choose final owned identifiers before distribution.
+`expo run:android` / `expo run:ios` install native dependencies when required. Generated `android/` and `ios/` directories are ignored; app configuration and native changes belong in reviewed Expo config plugins. Prototype identifiers are `org.vico.prototype`; choose final owned identifiers before production distribution.
 
 A JavaScript bundle export checks module resolution for both platforms but does **not** compile or exercise a native binary:
 
@@ -94,4 +100,4 @@ Deletion removes Vico-managed local content and its native storage key. This aim
 - `tests/`: meaningful domain and lifecycle tests.
 - `docs/`: plan, architecture, decisions, privacy and validation evidence.
 
-See [contributing](CONTRIBUTING.md), [security](SECURITY.md) and [third-party notices](THIRD_PARTY_NOTICES.md). Project repository: [fabiogiacomini/Vico](https://github.com/fabiogiacomini/Vico). It contains development source code; native field validation and mobile store submissions remain pending.
+See [contributing](CONTRIBUTING.md), [security](SECURITY.md) and [third-party notices](THIRD_PARTY_NOTICES.md). Project repository: [fabiogiacomini/Vico](https://github.com/fabiogiacomini/Vico). It contains development source code and an Android prerelease; native field validation, iOS installation and mobile store submissions remain pending.
