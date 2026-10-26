@@ -1,0 +1,27 @@
+name: Validate generated native projects
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  generate:
+    runs-on: macos-latest
+    env:
+      EXPO_NO_TELEMETRY: '1'
+      CI: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm prebuild
+      - name: Check native security configuration
+        run: |
+          rg 'expo.sqlite.useSQLCipher=true' android/gradle.properties
+          rg '"expo.sqlite.useSQLCipher": "true"' ios/Podfile.properties.json
+          rg 'android:allowBackup="false"' android/app/src/main/AndroidManifest.xml
+      - name: Reminder
+        run: echo 'This workflow generates projects. It does not claim native binary or physical-device validation.'

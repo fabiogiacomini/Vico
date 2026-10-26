@@ -1,0 +1,60 @@
+{
+  "name": "vico",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Private group coordination, open maps and honest context. Android and iOS.",
+  "license": "MIT",
+  "main": "index.ts",
+  "packageManager": "pnpm@11.25.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "start": "expo start --dev-client",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "check": "pnpm typecheck && pnpm test",
+    "export:web": "expo export --platform web",
+    "export:mobile": "expo export --platform android --platform ios --output-dir dist-mobile",
+    "prebuild": "expo prebuild --no-install",
+    "registry:check": "tsx scripts/check-registry.ts"
+  },
+  "dependencies": {
+    "@maplibre/maplibre-react-native": "^11.0.0",
+    "expo": "~58.0.19",
+    "expo-build-properties": "~58.0.11",
+    "expo-crypto": "~58.0.7",
+    "expo-dev-client": "~58.0.15",
+    "expo-document-picker": "~58.0.4",
+    "expo-file-system": "~58.0.11",
+    "expo-location": "~58.0.19",
+    "expo-network": "~58.0.4",
+    "expo-secure-store": "~58.0.2",
+    "expo-sqlite": "~58.0.14",
+    "expo-status-bar": "~58.0.4",
+    "lucide-react-native": "^0.577.0",
+    "maplibre-gl": "^5.21.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-native": "0.88.0",
+    "react-native-safe-area-context": "~5.10.1",
+    "react-native-svg": "15.16.0",
+    "react-native-web": "~0.21.4",
+    "saxes": "^6.0.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/react": "~19.3.0",
+    "@types/node": "^24.0.0",
+    "tsx": "^4.21.0",
+    "typescript": "~6.0.3",
+    "vitest": "^4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fabiogiacomini/Vico.git"
+  }
+}

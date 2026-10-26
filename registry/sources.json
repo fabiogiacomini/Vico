@@ -1,0 +1,21 @@
+{
+  "version": 1, "revision": 1,
+  "sources": [
+    {
+      "id": "bologna-wifi", "name": "BolognaWifi Affollamento", "kind": "crowd", "state": "candidate",
+      "documentation": "https://www.dati.gov.it/node/view-dataset/dataset?id=a44eec7e-5b6e-4a81-9e33-0355cf5f9c66",
+      "metric": "detected_devices", "unit": "devices per monitored Wi-Fi area", "license": "CC-BY-4.0 (catalog declaration; pending validation)",
+      "attribution": "Comune di Bologna — BolognaWifi", "coverage": { "west": 11.2, "south": 44.4, "east": 11.5, "north": 44.6 },
+      "updateSeconds": 86400, "maxAgeSeconds": 172800, "lastValidated": null,
+      "limitations": ["Candidate bounding box is approximate and never used as active sensor coverage.", "Devices are not people.", "Hourly aggregates may be published daily.", "A recent-record and reuse-rights validation is required before activation."]
+    },
+    {
+      "id": "melbourne-pedestrians", "name": "Melbourne pedestrian counters", "kind": "crowd", "state": "candidate",
+      "documentation": "https://discover.data.vic.gov.au/en_AU/dataset/pedestrian-counting-system-past-hour-counts-per-minute",
+      "metric": "pedestrian_passages", "unit": "directional passages per sensor interval", "license": "CC-BY-4.0 (catalog declaration; pending validation)",
+      "attribution": "City of Melbourne", "coverage": { "west": 144.9, "south": -37.9, "east": 145.05, "north": -37.7 },
+      "updateSeconds": 900, "maxAgeSeconds": 3600, "lastValidated": null,
+      "limitations": ["Candidate bounding box is approximate; actual sensor locations must be validated.", "Passages are not simultaneous occupancy.", "A recent-record and reuse-rights validation is required before activation."]
+    }
+  ]
+}
